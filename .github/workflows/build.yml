@@ -19,15 +19,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      # هذه الخطوة لحل مشكلة الرخص التي تسببت في الخطأ الأحمر سابقاً
-      - name: Accept Android SDK Licenses
-        run: |
-          mkdir -p ${ANDROID_HOME}/licenses
-          echo -e "\n8945a99c18e776d5e21c4b19041d5002b45686b3\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n76131947dca4106994350a2654d9c4e6a5b7e310\n47f22d05fbd08dc4578f3a8137a2d59e0e172221\nb3a528a24e7e7903650635297c6d309695b2446f\n94f90117a93428a22ff95e34b159f3a2462fe33d\nbcbbd9dae996d440d1bc747d6617279d9e9e11b2" > ${ANDROID_HOME}/licenses/android-sdk-license
-          echo -e "\n84831b9409646a547e30b186b0002cc0c871f73f" > ${ANDROID_HOME}/licenses/android-googletv-license
-
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Prepare project
         run: |

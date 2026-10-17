@@ -22,13 +22,15 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
 
+      # هذه الخطوة ستقوم بإنشاء ملفات Gradle الناقصة في مشروعك تلقائياً
+      - name: Initialize Gradle Wrapper
+        run: gradle wrapper
+
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew
-        continue-on-error: true
 
       - name: Build APK
         run: ./gradlew assembleDebug --stacktrace
-        continue-on-error: false
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

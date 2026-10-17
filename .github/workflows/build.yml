@@ -19,12 +19,15 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      # هذه الخطوة السحرية ستقوم بإنشاء ملفات ومجلدات gradle الناقصة فوراً
+      - name: Create Missing Gradle Files
+        run: |
+          gradle wrapper --gradle-version 8.2
+          touch settings.gradle.kts
+          echo "include(':app')" > settings.gradle.kts
+
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
-
-      # هذه الخطوة ستقوم بإنشاء ملفات Gradle الناقصة في مشروعك تلقائياً
-      - name: Initialize Gradle Wrapper
-        run: gradle wrapper
 
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew

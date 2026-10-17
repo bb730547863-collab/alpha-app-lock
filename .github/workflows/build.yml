@@ -22,32 +22,13 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Prepare project
-        run: |
-          mkdir -p app
-          cp -r "برنامج/src/main" app/src
-          cp "برنامج/build.gradle.kts" app/build.gradle.kts
-          cat > settings.gradle.kts <<'EOF'
-          pluginManagement {
-              repositories {
-                  google()
-                  mavenCentral()
-                  gradlePluginPortal()
-              }
-          }
-          dependencyResolutionManagement {
-              repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-              repositories {
-                  google()
-                  mavenCentral()
-              }
-          }
-          rootProject.name = "AlphaAppLock"
-          include(":app")
-          EOF
+      - name: Grant Execute Permission for Gradle
+        run: chmod +x gradlew
+        continue-on-error: true
 
       - name: Build APK
-        run: gradle assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --stacktrace
+        continue-on-error: false
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

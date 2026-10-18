@@ -37,29 +37,4 @@ class MainActivity : Activity() {
             setTextColor(Color.WHITE)
         }
 
-        val input = EditText(this).apply {
-            hint = "أدخل رمز الدخول"
-            inputType = 2
-            setSingleLine(true)
-            gravity = Gravity.CENTER
-            setTextColor(Color.WHITE)
-        }
-
-        val message = TextView(this).apply {
-            gravity = Gravity.CENTER
-            setTextColor(Color.RED)
-        }
-
-        val button = Button(this).apply {
-            text = "فتح التطبيق"
-        }
-
-        layout.addView(title)
-        layout.addView(input)
-        layout.addView(message)
-        layout.addView(button)
-
-        button.setOnClickListener {
-            if (input.text.toString() == accessCode) {
-                layout.removeAllViews()
-                layout.addView(TextView(this
+        

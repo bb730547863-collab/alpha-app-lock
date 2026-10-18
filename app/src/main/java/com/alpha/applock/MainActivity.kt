@@ -1,4 +1,3 @@
-
 package com.alpha.applock
 
 import android.app.Activity
@@ -63,17 +62,4 @@ class MainActivity : Activity() {
         button.setOnClickListener {
             if (input.text.toString() == accessCode) {
                 layout.removeAllViews()
-                layout.addView(TextView(this).apply {
-                    text = "تم فتح التطبيق\nمرحبًا بك في Alpha App Lock"
-                    textSize = 23f
-                    gravity = Gravity.CENTER
-                    setTextColor(Color.WHITE)
-                })
-            } else {
-                message.text = "الرمز غير صحيح"
-            }
-        }
-
-        setContentView(layout)
-    }
-}
+                layout.addView(TextView(this
